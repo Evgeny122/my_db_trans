@@ -1,0 +1,12 @@
+{% block title %}
+list carrier
+{% end block %}
+
+{% block content %}
+{% if all_list %}
+    {% for carrier in all_list %}
+        <a>{{ carrier.name }}</a>
+    {% endfor %}
+{% else %}
+    <a>Список перевозчиков пуст</a>
+{% endif %}
