@@ -15,9 +15,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from list_trans.views import start_page
+from profiles.views import (
+    login_view,
+    logout_view,
+    register_view,
+    edit_user,
+    detail_user,
+    list_users,
+    )
+from list_trans.views import (
+    index,
+    all_car, 
+    detail_car, 
+    delete_car,
+    create_car,
+    edit_car
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', start_page),
+    path('', index, name='index'),
+    path('logout/', logout_view),
+    path('login/',login_view),
+    path('register/', register_view),
+    path('allcar/', all_car, name='all_car'),
+    path('allcar/car/<int:pk>/', detail_car, name='detail_car'),
+    path('car/create/', create_car, name='create_car'),
+    path('allcar/car/delete/<int:pk>/', delete_car),
+    path('allcar/car/edit/<int:pk>/', edit_car),
+    path('profile/<int:pk>/', detail_user),
+    path('profile/edit/<int:pk>/', edit_user),
+    path('list_users/', list_users),
 ]

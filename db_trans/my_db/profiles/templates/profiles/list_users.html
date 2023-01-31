@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+List of employees
+{% endblock %}
+
+{% block content %}
+
+{% for user in profile %}
+    <h1>
+        <a href="/profile/{{ user.id }}">{{ user }}</a>
+    </h1>
+{% endfor %}
+
+{% endblock %}

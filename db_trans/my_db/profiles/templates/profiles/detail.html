@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+{{ block.super }} - {{ profile }}
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    <mark>User: {{ profile }} </mark>
+</h1>
+{% if profile.userinformation.bio %}
+    <h1>bio: {{ profile.userinformation.bio }}</h1>
+{% else %}
+    <h1>No bio</h1>
+{% endif %}
+
+
+{% if profile.userinformation.post %}
+    <h1>Your post: {{ profile.userinformation.post }}</h1>
+{% else %}
+    <h1> No post </h1>
+{% endif %}
+
+{% if user.id == profile.id or request.user.is_staff%}
+    <a href="/profile/edit/{{ profile.id }}">Редактировать</a>
+{% endif %}
+{% endblock %}

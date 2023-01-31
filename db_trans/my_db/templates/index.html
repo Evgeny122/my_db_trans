@@ -1,12 +1,22 @@
-{% block title %}
-list carrier
-{% end block %}
+{% extends "base.html" %}
 
 {% block content %}
-{% if all_list %}
-    {% for carrier in all_list %}
-        <a>{{ carrier.name }}</a>
-    {% endfor %}
+{% if user.is_authenticated %}
+    <h1>
+        <mark><a href="allcar/">Список перевозчиков</a></mark>
+    </h1>
+
+    <h1>
+        <mark><a href="car/create/">Создать нового перевозчика</a></mark>
+    </h1>
+    
+    <h1>
+        <mark><a href="list_users/">Список сотрудников</a></mark>
+    </h1>
+
 {% else %}
-    <a>Список перевозчиков пуст</a>
+    <h1>
+    <mark><span>У вас ограниченный доступ</span></mark>
+    </h1>
 {% endif %}
+{% endblock %}
